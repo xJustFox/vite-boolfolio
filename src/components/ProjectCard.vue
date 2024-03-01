@@ -33,7 +33,7 @@ export default {
 <template lang="">
 <div class="col-4 py-2 ">
     <div class="card">
-        <img :src="getImg()" class="card-img-top" alt="...">
+        <img :src="getImg()" class="card-img-top" :alt="project.name" style="max-height: 300px">
         <div class="card-body">
           <h5 class="card-title">{{project.name}}</h5>
           <p class="card-text">{{project.description.substring(0, 20)}}...</p>
