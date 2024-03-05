@@ -15,7 +15,6 @@ export default {
     },
     methods: {
         getProject() {
-            console.log(this.$route.params.slug);
             axios.get(`${this.store.apiUrl}/api/projects/${this.$route.params.slug}`).then((response) => {
                 this.project = response.data.results;
             })
@@ -45,21 +44,17 @@ export default {
 
 
                     <div class="my-2">
-                        <div v-if="project.technologies.length > 0">
-                            <div class="badge rounded-pill my-color me-1"
-                                v-for="(technology, index) in project.technologies" :key="index">
-                                {{ technology.name }}
-                            </div>
-                        </div>
-                        <div v-else>
-                            <span class="fs-small">There are no technologies</span>
+                        <div class="badge rounded-pill my-color me-1"
+                            v-for="(technology, index) in project.technologies" :key="index">
+                            {{ technology.name }}
                         </div>
                     </div>
                     <p>{{ project.description }}</p>
 
 
                     <div v-if="project.type">
-                        Type: {{ project.type.name }}
+                        Type: 
+                        <span class="badge rounded-pill my-color me-1">{{ project.type.name }}</span>
                     </div>
                     <div v-else>
                         Without type

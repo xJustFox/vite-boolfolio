@@ -3,6 +3,7 @@ import Home from './pages/Home.vue';
 import Projects from './pages/Projects.vue';
 import ErrorNotFund from './pages/ErrorNotFund.vue';
 import ShowProject from './pages/ShowProject.vue';
+import TypeProjects from './pages/TypeProjects.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -21,6 +22,11 @@ const router = createRouter({
             path: '/projects/:slug',
             name: 'show-project',
             component: ShowProject
+        },
+        {
+            path: '/projects/type/:slug',
+            name: 'type-projects',
+            component: TypeProjects
         },
         {
             path: '/:patchMatch(.*)*',

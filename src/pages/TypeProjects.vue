@@ -4,7 +4,7 @@ import { store } from '../store.js';
 import axios from 'axios';
 
 export default {
-    name: 'Projects',
+    name: 'TypesProjects',
     data() {
         return {
             store,
@@ -23,7 +23,9 @@ export default {
     },
     methods: {
         getPorjects(page_num) {
-            axios.get(`${this.store.apiUrl}/api/projects/`, {
+            console.log(this.$route.params.slug);
+            this.projects = [];
+            axios.get(`${this.store.apiUrl}/api/projects/type/${this.$route.params.slug}`, {
                 params: {
                     page: page_num
                 }
@@ -46,7 +48,7 @@ export default {
     <div class="container-lg py-4">
         <div class="row">
             <div class="col-12 text-center py-3">
-                <h1>Projects page</h1>
+                <h1>Types Projects page</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil voluptate ex quasi quis ducimus
                     aliquam sint expedita. Tenetur ullam dolorem voluptatibus, mollitia accusamus nam odio nemo nihil
                     vitae, laboriosam obcaecati?</p>
@@ -54,7 +56,9 @@ export default {
 
             <hr>
             <div class="col-12 py-3">
-                <router-link class="badge rounded-pill type-fs my-color me-2 text-decoration-none" :to="{ name: 'type-projects', params: { slug: type.slug } }" v-for="(type, index) in types" :key="index"> {{ type.name }} </router-link>
+                <div @click="getPorjects(page_num)">
+                    <router-link class="badge rounded-pill type-fs my-color me-2 text-decoration-none" :to="{ name: 'type-projects', params: { slug: type.slug } }" v-for="(type, index) in types" :key="index"> {{ type.name }} </router-link>
+                </div>
             </div>
             <ProjectCard v-for="(project, index) in projects" :key="index" :project="project" />
             <div class="col-12 d-flex justify-content-end py-3 ">
