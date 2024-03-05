@@ -21,7 +21,7 @@ export default {
     },
     methods: {
         getPorjects(page_num) {
-            axios.get(this.store.apiUrl, {
+            axios.get(`${this.store.apiUrl}/api/projects/`, {
                 params: {
                     page: page_num
                 }
@@ -49,11 +49,11 @@ export default {
 
             <ProjectCard v-for="(project, index) in projects" :key="index" :project="project" />
             <div class="col-12 d-flex justify-content-end py-3 ">
-                <button :class="current_page == 1 ? 'disabled' : ''" class="btn btn-sm btn-primary me-2 "
+                <button :class="current_page == 1 ? 'disabled' : ''" class="btn btn-sm my-color me-2 "
                     @click="getPorjects(current_page - 1)">
                     prev
                 </button>
-                <button :class="current_page == this.last_page ? 'disabled' : ''" class="btn btn-sm btn-primary"
+                <button :class="current_page == this.last_page ? 'disabled' : ''" class="btn btn-sm my-color"
                     @click="getPorjects(current_page + 1)">
                     next
                 </button>
@@ -62,4 +62,11 @@ export default {
     </div>
 </template>
 
-<style lang="scss" scoped></style>./AppMain.vue/index.js
+<style lang="scss" scoped>
+.btn{
+
+    &:hover{
+        background-color: #203054b4;
+    }
+}
+</style>

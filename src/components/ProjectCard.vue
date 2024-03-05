@@ -12,7 +12,7 @@ export default {
         project: Object,
     },
     methods: {
-        getImg(){
+        getImg() {
             let img;
             let imgApi = this.project.img;
 
@@ -30,21 +30,37 @@ export default {
 }
 </script>
 
-<template lang="">
-<div class="col-4 py-2 ">
-    <div class="card">
-        <img :src="getImg()" class="card-img-top" :alt="project.name" style="max-height: 300px">
-        <div class="card-body">
-          <h5 class="card-title">{{project.name}}</h5>
-          <p class="card-text">{{project.description.substring(0, 20)}}...</p>
-          <div class="text-end ">
-              <a href="#" class="btn btn-primary">Show More</a>
-          </div>
+<template>
+    <div class="col-4 py-2 ">
+        <div class="card">
+            <img :src="getImg()" class="card-img-top" :alt="project.name" style="max-height: 300px">
+            <div class="card-body">
+                <h5 class="card-title">{{ project.name }}</h5>
+                <div class="d-flex">
+                    <div v-if="project.technologies.length> 0">
+                        <div class="badge rounded-pill my-color me-1" v-for="(technology, index) in project.technologies" :key="index">
+                            {{ technology.name }}
+                        </div>
+                    </div>
+                    <div v-else>
+                        <span class="fs-small">There are no technologies</span>
+                    </div>
+                </div>
+                <p class="card-text">{{ project.description.substring(0, 20) }}...</p>
+                <div class="text-end ">
+                    <router-link class="btn btn-sm my-color" :to="{ name: 'show-project', params: { slug: project.slug } }"> Show More </router-link>
+                </div>
+            </div>
         </div>
-      </div>
-</div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
+.btn{
+    color: white;
 
+    &:hover{
+        background-color: #203054b4;
+    }
+}
 </style>
