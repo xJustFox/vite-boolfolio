@@ -34,6 +34,10 @@ export default {
                     this.surname = '';
                     this.email = '';
                     this.description = '';
+
+                    this.$router.push({
+                        name: 'thanks-you',
+                    });
                 }
                 else{
 					this.errors = response.data.errors
@@ -76,7 +80,7 @@ export default {
                 </div>
 
                 <div class="col-12 text-end py-2">
-                    <button class="btn btn-sm btn-primary" type="submit">Send</button>
+                    <button class="btn btn-sm btn-primary" type="submit" :disable="loading">{{loading ? 'Sendind...' : 'Send'}}</button>
                 </div>
             </div>
         </form>

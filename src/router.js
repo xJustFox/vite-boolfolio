@@ -5,7 +5,7 @@ import ErrorNotFund from './pages/ErrorNotFund.vue';
 import ShowProject from './pages/ShowProject.vue';
 import TypeProjects from './pages/TypeProjects.vue';
 import ContactUs from './pages/ContactUs.vue';
-
+import ThanksPage from './pages/ThanksPage.vue'
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -33,6 +33,11 @@ const router = createRouter({
             path: '/contact-us',
             name: 'contact-us',
             component: ContactUs,
+        },
+        {
+            path: '/contact-us/thanks-you',
+            name: 'thanks-you',
+            component: ThanksPage,
         },
         {
             path: '/:patchMatch(.*)*',
