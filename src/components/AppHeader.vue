@@ -13,6 +13,10 @@ export default {
                     name: 'projects',
                     label: 'Projects',
                 },
+                {
+                    name: 'contact-us',
+                    label: 'Contact Us',
+                },
             ],
         };
     },
